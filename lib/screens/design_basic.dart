@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class BasicScreen extends StatelessWidget {
@@ -24,7 +26,10 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [Background(), ColumnContent()],
+      children: [
+        Background(),
+        ContentColumn(),
+      ],
     );
   }
 }
@@ -35,7 +40,7 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff30BAD6),
+      color: Color(0xff30bad6),
       child: Center(
         child: TextButton(
           onPressed: () {
@@ -43,10 +48,15 @@ class Page2 extends StatelessWidget {
           },
           child: Text(
             'Bienvenido',
-            style: TextStyle(color: Colors.white, fontSize: 30),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+            ),
           ),
           style: TextButton.styleFrom(
-              backgroundColor: Color(0xff0098FA), shape: StadiumBorder()),
+            backgroundColor: Color(0xff0098fa),
+            shape: StadiumBorder(),
+          ),
         ),
       ),
     );
@@ -59,36 +69,38 @@ class Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff30BAD6),
+      color: Color(0xff30bad6),
       height: double.infinity,
       alignment: Alignment.topCenter,
-      child: Image(
-        image: AssetImage('assets/fondo.png'),
-      ),
+      child: Image(image: AssetImage('assets/fondo.png')),
     );
   }
 }
 
-class ColumnContent extends StatelessWidget {
-  const ColumnContent({Key? key}) : super(key: key);
+class ContentColumn extends StatelessWidget {
+  const ContentColumn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var textStyle = TextStyle(
-        fontSize: 60, fontWeight: FontWeight.bold, color: Colors.white);
+      fontSize: 60,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    );
     return SafeArea(
       bottom: false,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            '23°',
-            style: textStyle,
-          ),
+          Text('23°', style: textStyle),
           Text('Lunes', style: textStyle),
           Expanded(child: Container()),
-          Icon(Icons.keyboard_arrow_down, size: 100, color: Colors.white)
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: 100,
+            color: Colors.white,
+          ),
         ],
       ),
     );
